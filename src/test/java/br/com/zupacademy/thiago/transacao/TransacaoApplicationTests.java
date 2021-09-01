@@ -1,4 +1,4 @@
-package br.com.zupacademy.thiago.demo;
+package br.com.zupacademy.thiago.transacao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
