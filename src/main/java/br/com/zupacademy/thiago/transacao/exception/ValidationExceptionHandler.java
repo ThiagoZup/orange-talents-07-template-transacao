@@ -30,6 +30,14 @@ public class ValidationExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
     }
 
+    @ExceptionHandler(ForbiddenActionException.class)
+    public ResponseEntity<StandardError> forbiddenAction(ForbiddenActionException e,
+                                                         HttpServletRequest request) {
+
+        StandardError err = new StandardError(System.currentTimeMillis(), HttpStatus.FORBIDDEN.value(), e.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(err);
+    }
+
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<FieldMessage> handle(MethodArgumentNotValidException exception) {
